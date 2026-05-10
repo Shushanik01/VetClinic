@@ -16,10 +16,11 @@ const ClientDetails = ({
 
   onClientSelect?: (
     clientId: string,
-    pets: Array<{ petId: string; petName: string }>
+    pets: Array<{ petId: string; name: string }>
   ) => void;
 }) => {
-  const { data: clients = [], isLoading: clientsLoading } = useGetClientsQuery();
+  const { data: clients = [], isLoading: clientsLoading } =
+    useGetClientsQuery();
   const [formType, setFormType] = useState('first');
   const [selectedClientId, setSelectedClientId] = useState('');
   const [selectedClientName, setSelectedClientName] = useState('');
@@ -102,7 +103,10 @@ const ClientDetails = ({
     const client = clients.find((c) => c.userId === clientId);
     if (client) {
       setSelectedClientName(`${client.firstName} ${client.lastName}`);
-      onClientSelect?.(clientId, client.pets.map((p) => ({ petId: p.petId, petName: p.name })));
+      onClientSelect?.(
+        clientId,
+        client.pets.map((p) => ({ petId: p.petId, name: p.name }))
+      );
     }
     onValidChange?.(!!clientId);
   };
@@ -122,7 +126,9 @@ const ClientDetails = ({
             <SelectOption
               name="clientId"
               options={clientOptions}
-              placeholder={clientsLoading ? 'Loading clients...' : 'Select a client'}
+              placeholder={
+                clientsLoading ? 'Loading clients...' : 'Select a client'
+              }
               onChange={handleClientSelect}
             />
           </>

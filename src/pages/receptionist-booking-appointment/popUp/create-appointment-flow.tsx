@@ -34,7 +34,7 @@ export const CreateAppointmentFlow = ({
   );
   const [isFormValid, setIsFormValid] = useState(false);
   const [clientPets, setClientPets] = useState<
-    Array<{ petId: string; petName: string }>
+    Array<{ petId: string; name: string }>
   >([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookAppointment] = useBookAppointmentMutation();

@@ -47,7 +47,6 @@ describe('Feedback', () => {
 
   it('renders 5 star icons', () => {
     render(<Feedback {...defaultProps} />);
-    const stars = screen.getAllByRole('img', { hidden: true });
     // FeedbackStar (x5) + redstar img
     expect(screen.getAllByLabelText('svg-react-mock')).toHaveLength(5);
   });
@@ -109,7 +108,9 @@ describe('Feedback', () => {
     const stars = screen.getAllByLabelText('svg-react-mock');
     fireEvent.click(stars[0]);
 
-    expect(screen.getByPlaceholderText('Please explain your low rating')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('Please explain your low rating')
+    ).toBeInTheDocument();
   });
 
   it('shows "Please explain your low rating" placeholder when rating is 2', () => {
@@ -117,7 +118,9 @@ describe('Feedback', () => {
     const stars = screen.getAllByLabelText('svg-react-mock');
     fireEvent.click(stars[1]);
 
-    expect(screen.getByPlaceholderText('Please explain your low rating')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('Please explain your low rating')
+    ).toBeInTheDocument();
   });
 
   it('shows default placeholder when rating is 3', () => {
@@ -154,7 +157,9 @@ describe('Feedback', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(
-      screen.getByText('Please review and edit your feedback to meet our guidlines so we can publish it')
+      screen.getByText(
+        'Please review and edit your feedback to meet our guidlines so we can publish it'
+      )
     ).toBeInTheDocument();
   });
 
@@ -166,13 +171,17 @@ describe('Feedback', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
     expect(
-      screen.queryByText('Please review and edit your feedback to meet our guidlines so we can publish it')
+      screen.queryByText(
+        'Please review and edit your feedback to meet our guidlines so we can publish it'
+      )
     ).not.toBeInTheDocument();
   });
 
   it('does not show rating error before submission', () => {
     render(<Feedback {...defaultProps} />);
-    expect(screen.queryByText('Please select a rating.')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('Please select a rating.')
+    ).not.toBeInTheDocument();
   });
 
   // --- Cancel button ---
@@ -192,7 +201,9 @@ describe('Feedback', () => {
     render(<Feedback {...defaultProps} />);
     const stars = screen.getAllByLabelText('svg-react-mock');
     fireEvent.click(stars[3]); // rating = 4
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Nice!' } });
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'Nice!' },
+    });
 
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -214,7 +225,10 @@ describe('Feedback', () => {
 
     await waitFor(() => {
       expect(mockNotify).toHaveBeenCalledWith(
-        expect.objectContaining({ title: 'Feedback submitted', type: 'success' })
+        expect.objectContaining({
+          title: 'Feedback submitted',
+          type: 'success',
+        })
       );
     });
   });
@@ -247,7 +261,9 @@ describe('Feedback', () => {
     render(<Feedback {...defaultProps} feedbackId="fb-existing" />);
     const stars = screen.getAllByLabelText('svg-react-mock');
     fireEvent.click(stars[4]); // rating = 5
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Updated comment' } });
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'Updated comment' },
+    });
 
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
 
@@ -341,7 +357,9 @@ describe('Feedback', () => {
     render(<Feedback {...defaultProps} />);
     const stars = screen.getAllByLabelText('svg-react-mock');
     fireEvent.click(stars[1]); // rating = 2
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Not great' } });
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'Not great' },
+    });
 
     fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
 

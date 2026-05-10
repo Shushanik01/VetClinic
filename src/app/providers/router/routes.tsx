@@ -16,7 +16,6 @@ import { SignInPage } from '~/pages/sign-in-page/sign-in-page';
 import { MyAccountPage } from '~/pages/my-account-page/my-account-page';
 import { ProtectedRoute } from './protected-route';
 import { ClientAppointments } from '~/pages/Client-Appointments-page/ClientAppoint';
-import { UserRole } from '~/store/features/user/user-types';
 import type { RootState } from '~/store/store';
 import { isReceptionistRole } from '~/store/features/user/user-role';
 
