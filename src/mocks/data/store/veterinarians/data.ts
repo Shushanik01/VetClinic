@@ -20,12 +20,24 @@ export const veterinarians: VeterinarianProfile[] = [
     imageUrl: '/doctor.png',
     education: [
       { title: 'DVM', organization: 'Cornell University', year: '2014' },
+      { title: 'BS in Biology', organization: 'Yale University', year: '2010' },
+      {
+        title: 'Surgical Residency',
+        organization: 'Animal Medical Center, NYC',
+        year: '2016',
+      },
     ],
     certifications: [
+      { title: 'Small Animal Surgery', organization: 'ABVS', year: '2018' },
       {
-        title: 'Small Animal Surgery',
-        organization: 'ABVS',
-        year: '2018',
+        title: 'Orthopedic Procedures',
+        organization: 'ACVS',
+        year: '2019',
+      },
+      {
+        title: 'Advanced Anesthesia',
+        organization: 'ACVAA',
+        year: '2021',
       },
     ],
   },
@@ -40,12 +52,29 @@ export const veterinarians: VeterinarianProfile[] = [
     specializations: ['General practice', 'Wellness checks'],
     languages: ['English'],
     imageUrl: '/doctor.png',
-    education: [{ title: 'DVM', organization: 'UC Davis', year: '2016' }],
+    education: [
+      { title: 'DVM', organization: 'UC Davis', year: '2016' },
+      {
+        title: 'BS in Animal Science',
+        organization: 'Michigan State University',
+        year: '2012',
+      },
+    ],
     certifications: [
       {
         title: 'Companion Animal Medicine',
         organization: 'AAHA',
         year: '2019',
+      },
+      {
+        title: 'Preventive Care Specialist',
+        organization: 'AVMA',
+        year: '2020',
+      },
+      {
+        title: 'Fear Free Certified Professional',
+        organization: 'Fear Free',
+        year: '2022',
       },
     ],
   },
@@ -66,12 +95,23 @@ export const veterinarians: VeterinarianProfile[] = [
         organization: 'University of Pennsylvania',
         year: '2013',
       },
+      {
+        title: 'Dental Residency',
+        organization: 'Colorado State University',
+        year: '2015',
+      },
+      {
+        title: 'BS in Chemistry',
+        organization: 'Boston University',
+        year: '2009',
+      },
     ],
     certifications: [
+      { title: 'Veterinary Dentistry', organization: 'AVDC', year: '2020' },
       {
-        title: 'Veterinary Dentistry',
+        title: 'Oral Radiology & Imaging',
         organization: 'AVDC',
-        year: '2020',
+        year: '2021',
       },
     ],
   },
@@ -96,6 +136,42 @@ export const feedbackByVeterinarianId: Record<string, VeterinarianFeedback[]> =
         comment: 'Great care, waiting time was a little longer than expected.',
         date: '2026-02-27',
       },
+      {
+        id: 'fb-5',
+        clientName: 'Liam Foster',
+        petLabel: 'Max (Dog)',
+        rating: 5,
+        comment:
+          'Dr. Lee is outstanding. She explained every step of the procedure and Max recovered faster than expected.',
+        date: '2026-04-02',
+      },
+      {
+        id: 'fb-6',
+        clientName: 'Sophia Patel',
+        petLabel: 'Nala (Cat)',
+        rating: 5,
+        comment:
+          'Incredibly skilled surgeon. Nala had a complex orthopedic issue and Dr. Lee handled it perfectly.',
+        date: '2026-04-15',
+      },
+      {
+        id: 'fb-7',
+        clientName: 'Marcus Webb',
+        petLabel: 'Charlie (Dog)',
+        rating: 3,
+        comment:
+          'Surgery went well but getting follow-up appointments was a bit difficult. Care quality itself was excellent.',
+        date: '2026-01-20',
+      },
+      {
+        id: 'fb-8',
+        clientName: 'Ava Thompson',
+        petLabel: 'Luna (Dog)',
+        rating: 5,
+        comment:
+          'Best vet surgeon we have ever visited. Very thorough pre-op assessment and clear aftercare instructions.',
+        date: '2026-03-28',
+      },
     ],
     'c1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c': [
       {
@@ -106,6 +182,42 @@ export const feedbackByVeterinarianId: Record<string, VeterinarianFeedback[]> =
         comment: 'Super friendly and helped us build a care routine.',
         date: '2026-03-05',
       },
+      {
+        id: 'fb-9',
+        clientName: 'Chloe Kim',
+        petLabel: 'Peanut (Hamster)',
+        rating: 4,
+        comment:
+          'Dr. Wilson was patient and thorough. She took time to explain the wellness plan in detail.',
+        date: '2026-02-14',
+      },
+      {
+        id: 'fb-10',
+        clientName: 'Ethan Brooks',
+        petLabel: 'Rocky (Dog)',
+        rating: 5,
+        comment:
+          'Always professional and kind. Rocky actually enjoys his visits now, which says a lot!',
+        date: '2026-04-10',
+      },
+      {
+        id: 'fb-11',
+        clientName: 'Isabella Cruz',
+        petLabel: 'Simba (Cat)',
+        rating: 4,
+        comment:
+          'Very knowledgeable. She caught an issue during a routine check that we had completely missed.',
+        date: '2026-01-30',
+      },
+      {
+        id: 'fb-12',
+        clientName: 'James Nguyen',
+        petLabel: 'Buddy (Dog)',
+        rating: 5,
+        comment:
+          'Excellent general vet. Her recommendations for diet and exercise made a noticeable difference.',
+        date: '2026-03-22',
+      },
     ],
     'd5e6f7g8-9h0i-1j2k-3l4m-5n6o7p8q9r0s': [
       {
@@ -115,6 +227,33 @@ export const feedbackByVeterinarianId: Record<string, VeterinarianFeedback[]> =
         rating: 4,
         comment: 'Good consultation with practical recovery tips.',
         date: '2026-03-01',
+      },
+      {
+        id: 'fb-13',
+        clientName: 'Ryan Mitchell',
+        petLabel: 'Daisy (Dog)',
+        rating: 5,
+        comment:
+          'Dr. Brown is a true specialist. Daisy had severe dental disease and he resolved it completely.',
+        date: '2026-04-05',
+      },
+      {
+        id: 'fb-14',
+        clientName: 'Grace Sullivan',
+        petLabel: 'Whiskers (Cat)',
+        rating: 5,
+        comment:
+          'Thorough dental cleaning and he showed us X-rays to explain exactly what was happening. Very impressive.',
+        date: '2026-02-18',
+      },
+      {
+        id: 'fb-15',
+        clientName: 'Daniel Park',
+        petLabel: 'Oreo (Cat)',
+        rating: 4,
+        comment:
+          'Great expertise in dental procedures. Post-op recovery instructions were clear and helpful.',
+        date: '2026-03-14',
       },
     ],
   };
