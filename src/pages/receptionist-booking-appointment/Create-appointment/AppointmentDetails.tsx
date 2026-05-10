@@ -16,9 +16,11 @@ import type { AppointmentSlot } from '~/store/api/appointments/appointment-types
 type Clinic = { clinicId: string; clinicLocation: string };
 
 const API_URL =
-  (import.meta.env.VITE_API_URL as string) ||
-  (window as any).__APP_CONFIG__?.API_URL ||
-  '';
+  import.meta.env.VITE_ENABLE_MSW === 'true'
+    ? import.meta.env.BASE_URL.replace(/\/$/, '')
+    : (import.meta.env.VITE_API_URL as string) ||
+      (window as any).__APP_CONFIG__?.API_URL ||
+      '';
 
 export default function AppointmentDetails({
   onValidChange,

@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
+import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 export default defineConfig(({ mode }) => {
@@ -8,7 +9,7 @@ export default defineConfig(({ mode }) => {
   const isMockMode = mode === 'mock' || env.VITE_ENABLE_MSW === 'true';
 
   return {
-    plugins: [react(), svgr()],
+    plugins: [react(), svgr(), tailwindcss()],
     resolve: {
       alias: { '~': path.resolve(__dirname, './src') },
     },
