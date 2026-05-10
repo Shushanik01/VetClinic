@@ -1,0 +1,84 @@
+@layer components {
+  .btn-regular-l,
+  .btn-white-l,
+  .btn-regular-m,
+  .btn-white-m,
+  .btn-text {
+    cursor: pointer;
+  }
+
+  /* =======================
+     Regular Large Button
+     ======================= */
+  .btn-regular-l {
+    @apply h-[48px] rounded-[32px] px-[40px] py-[12px] gap-[10px]
+           flex items-center justify-center transition-colors duration-200
+           bg-black-900 text-neutral-0 font-lato text-button font-[400];
+  }
+  .btn-regular-l:hover {
+    @apply bg-black-800;
+  }
+  .btn-regular-l:disabled {
+    @apply bg-neutral-400 cursor-not-allowed;
+  }
+
+  /* =======================
+     White Large Button
+     ======================= */
+  .btn-white-l {
+    @apply h-[48px] rounded-[32px] px-[40px] py-[12px] gap-[8px]
+           flex items-center justify-center transition-colors duration-200
+           bg-neutral-0 border border-black-900 text-black-900 font-lato text-button font-[400];
+  }
+  .btn-white-l:hover {
+    @apply bg-neutral-50;
+  }
+  .btn-white-l:disabled {
+    @apply bg-neutral-50 border-neutral-400 cursor-not-allowed;
+  }
+
+  /* =======================
+     Regular Medium Button
+     ======================= */
+  .btn-regular-m {
+    @apply h-[40px] rounded-[32px] px-[40px] py-[8px] gap-[10px]
+           flex items-center justify-center transition-colors duration-200
+           bg-black-900 text-neutral-0 font-lato text-button font-[400];
+  }
+  .btn-regular-m:hover {
+    @apply bg-black-800;
+  }
+  .btn-regular-m:disabled {
+    @apply bg-neutral-400 cursor-not-allowed;
+  }
+
+  /* =======================
+     White Medium Button
+     ======================= */
+  .btn-white-m {
+    @apply h-[40px] rounded-[32px] px-[40px] py-[8px] gap-[10px]
+           flex items-center justify-center transition-colors duration-200
+           bg-neutral-0 border border-black-900 text-black-900 font-lato text-button font-[400];
+  }
+  .btn-white-m:hover {
+    @apply bg-neutral-50;
+  }
+  .btn-white-m:disabled {
+    @apply bg-neutral-50 border-neutral-400 cursor-not-allowed;
+  }
+
+  /* =======================
+     Text Button
+     ======================= */
+  .btn-text {
+    @apply h-[28px] rounded-[32px] px-[4px] py-[2px] gap-[10px]
+           flex items-center justify-center transition-colors duration-200
+           bg-transparent text-green-400 font-lato text-body-m-regular font-[400];
+  }
+  .btn-text:hover {
+    @apply text-green-300;
+  }
+  .btn-text:disabled {
+    @apply text-neutral-400 cursor-not-allowed;
+  }
+}

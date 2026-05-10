@@ -1,0 +1,25 @@
+.table {
+  width: 100%;
+  height: 224px;
+  border-radius: 1rem;
+  border-collapse: collapse;
+}
+
+.head_row {
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #f5f6f7;
+  height: 14px;
+  border: 1px solid #f5f6f7;
+}
+
+.th_sizes {
+  padding: 1rem;
+}
+
+.example {
+  width: 20%;
+  height: 60px;
+  background-color: aqua;
+}

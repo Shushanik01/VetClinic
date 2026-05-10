@@ -1,0 +1,63 @@
+@reference "tailwindcss/utilities";
+
+@layer components {
+  /* =======================
+     Input Label
+     ======================= */
+  .input-label {
+    @apply h-[20px] gap-[2px] text-black-900 font-lato font-bold text-[14px] leading-[20px] tracking-[0.15px] mb-1;
+  }
+
+  /* =======================
+     Input Field (text, textarea)
+     ======================= */
+  .input-field {
+    @apply gap-[10px] rounded-[10px] px-[16px] py-[12px]
+           bg-neutral-0 border border-green-100 text-black-900 placeholder:text-neutral-400
+           font-lato font-normal text-[16px] leading-[20px] transition-shadow duration-200;
+  }
+  input.input-field {
+    @apply h-[48px];
+  }
+  textarea.input-field {
+    @apply min-h-[24px];
+  }
+  .input-field:hover {
+    @apply shadow-[0_4px_4px_0_#0446450D];
+  }
+  .input-field:focus {
+    @apply border-green-400 outline-none;
+  }
+  .input-field:disabled {
+    @apply bg-neutral-50 text-neutral-400 cursor-not-allowed;
+  }
+
+  /* =======================
+     Input Caption (helper/error text)
+     ======================= */
+  .input-caption {
+    @apply font-lato font-normal text-[12px] leading-[16px] tracking-[0.25px] text-black-600 mt-[4px];
+  }
+  .input-error {
+    @apply border-red-400;
+  }
+  .input-error + .input-caption {
+    @apply text-red-400;
+  }
+
+  /* =======================
+     Select / Dropdown Item
+     ======================= */
+  .select-item {
+    @apply h-[48px] gap-[8px] px-[16px] py-[12px] bg-neutral-0 text-black-900 font-lato font-normal text-[16px] leading-[24px] transition-colors duration-200;
+  }
+  .select-item:hover {
+    @apply bg-green-50 text-black-900;
+  }
+  .select-item-selected {
+    @apply font-lato font-bold text-black-900 bg-green-50;
+  }
+  .select-item-disabled {
+    @apply bg-neutral-0 text-black-700 cursor-not-allowed;
+  }
+}

@@ -1,0 +1,140 @@
+.container {
+  width: 75vh;
+  /* height: 40vh; */
+  background-color: #ffffff;
+  /* border: 1px black solid; */
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  font-weight: 500;
+  color: #101828;
+  margin-top: 12px;
+  font-size: 32px;
+  margin-left: 15px;
+}
+
+.feedbackText {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 15px;
+}
+
+.rating_row {
+  display: flex;
+  gap: 3px;
+}
+
+.star_wrapper {
+  display: flex;
+  flex-direction: row;
+  /* background-color: cadetblue; */
+  width: 90%;
+  margin-left: 15px;
+  gap: 15px;
+}
+
+.star_wrapper > p {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.star_wrapper + div p {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.comment_label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.error {
+  color: #e30404;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+.feedbackTextarea_error {
+  border-color: #d92d20 !important;
+}
+
+.feedbackTextarea {
+  width: 91.5%;
+  height: 72px;
+  margin-left: 3%;
+  border: 1px solid #d7f3f3;
+  border-radius: 10px;
+  resize: none;
+  padding: 8px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.feedbackTextarea:focus {
+  outline: none;
+  border-color: #d7f3f3;
+}
+
+.feedbackTextarea::placeholder {
+  vertical-align: top;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #99a1af;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel {
+  width: 115px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #101828;
+  border: solid 1px #101828;
+  border-radius: 32px;
+}
+
+.submit {
+  width: 115px;
+  height: 40px;
+  background-color: #101828;
+  color: #ffffff;
+  border: solid 1px #101828;
+  border-radius: 32px;
+  margin-left: 12px;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star:hover path,
+.star_active path {
+  fill: #128280;
+  stroke: #128280;
+}
+
+.cancel:hover {
+  background-color: #101828;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+.submit:hover {
+  background-color: #ffffff;
+  color: black;
+  transition: 0.5s;
+}

@@ -1,0 +1,147 @@
+@reference "tailwindcss/utilities";
+
+@layer utilities {
+  /* =======================
+     Green
+     ======================= */
+  .bg-green-50 {
+    background-color: #ebf9f9;
+  }
+  .bg-green-100 {
+    background-color: #d7f3f3;
+  }
+  .bg-green-200 {
+    background-color: #d1fae5;
+  }
+  .bg-green-300 {
+    background-color: #88c1bf;
+  }
+  .bg-green-400 {
+    background-color: #128280;
+  }
+  .bg-green-600 {
+    background-color: #0a6462;
+  }
+  .text-green-50 {
+    color: #ebf9f9;
+  }
+  .text-green-100 {
+    color: #d7f3f3;
+  }
+  .text-green-200 {
+    color: #d1fae5;
+  }
+  .text-green-300 {
+    color: #88c1bf;
+  }
+  .text-green-400 {
+    color: #128280;
+  }
+  .text-green-600 {
+    color: #0a6462;
+  }
+
+  /* =======================
+     Neutral
+     ======================= */
+  .bg-neutral-0 {
+    background-color: #ffffff;
+  }
+  .bg-neutral-50 {
+    background-color: #f5f6f7;
+  }
+  .bg-neutral-100 {
+    background-color: #e5e7eb;
+  }
+  .bg-neutral-400 {
+    background-color: #99a1af;
+  }
+  .text-neutral-0 {
+    color: #ffffff;
+  }
+  .text-neutral-50 {
+    color: #f5f6f7;
+  }
+  .text-neutral-100 {
+    color: #e5e7eb;
+  }
+  .text-neutral-400 {
+    color: #99a1af;
+  }
+
+  /* =======================
+     Black
+     ======================= */
+  .bg-black-600 {
+    background-color: #6a7282;
+  }
+  .bg-black-700 {
+    background-color: #878b93;
+  }
+  .bg-black-800 {
+    background-color: #364153;
+  }
+  .bg-black-900 {
+    background-color: #101828;
+  }
+  .text-black-600 {
+    color: #6a7282;
+  }
+  .text-black-700 {
+    color: #878b93;
+  }
+  .text-black-800 {
+    color: #364153;
+  }
+  .text-black-900 {
+    color: #101828;
+  }
+
+  /* =======================
+     Pink
+     ======================= */
+  .bg-pink-100 {
+    background-color: #fcedf2;
+  }
+  .bg-pink-600 {
+    background-color: #dc2e68;
+  }
+  .text-pink-100 {
+    color: #fcedf2;
+  }
+  .text-pink-600 {
+    color: #dc2e68;
+  }
+
+  /* =======================
+     Red
+     ======================= */
+  .bg-red-100 {
+    background-color: #fce9ed;
+  }
+  .bg-red-400 {
+    background-color: #e30404;
+  }
+  .text-red-100 {
+    color: #fce9ed;
+  }
+  .text-red-400 {
+    color: #e30404;
+  }
+
+  /* =======================
+     Blue
+     ======================= */
+  .bg-blue-300 {
+    background-color: #dbeafe;
+  }
+  .bg-blue-600 {
+    background-color: #006cf0;
+  }
+  .text-blue-300 {
+    color: #dbeafe;
+  }
+  .text-blue-600 {
+    color: #006cf0;
+  }
+}

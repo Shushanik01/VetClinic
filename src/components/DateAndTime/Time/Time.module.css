@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+
+  border: 1px solid #128280;
+  border-radius: 0.5rem;
+
+  max-height: 20vh;
+  overflow-y: auto;
+  width: min-content;
+  scrollbar-width: none;
+}
+
+.container p {
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.container .selected {
+  background-color: #128280;
+  color: #fff;
+}

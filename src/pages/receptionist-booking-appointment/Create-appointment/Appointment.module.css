@@ -1,0 +1,47 @@
+/* Date + Time wrapper */
+.dateTimeWrapper,
+.profileWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.profileWrapper {
+  align-items: flex-end;
+
+  justify-content: space-between;
+}
+
+/* .inputWrapper > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+} */
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.profileWrapper div {
+  width: 70%;
+}
+
+.profileWrapper p {
+  font-size: 14px;
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: #878b93;
+}
+
+.profile {
+  color: #88c1bf;
+}

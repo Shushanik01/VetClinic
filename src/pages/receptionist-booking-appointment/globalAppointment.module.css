@@ -1,0 +1,52 @@
+/* Each form group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Labels always above */
+.formGroup label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Inputs + select + textarea */
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  background: inherit;
+  border-radius: 0.5rem;
+  font-size: 14px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: var(--border-color);
+}
+
+.formGroup label::after {
+  content: ' *';
+  color: red;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-height: 35dvh;
+
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  border-left: 1px solid #e5e7eb;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

@@ -1,0 +1,76 @@
+.notify-container {
+  width: 400px;
+  border-radius: 0.375rem;
+  border: 1px solid #128280;
+  background-color: #ebf9f9;
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.notify-success {
+  border-color: #128280;
+  background-color: #ebf9f9;
+}
+
+.notify-error {
+  border-color: #e30404;
+  background-color: #fce9ed;
+}
+
+.notify-enter {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notify-exit {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.notify-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.notify-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.notify-header {
+  font-weight: 700;
+  font-size: 16px;
+  color: #101828;
+}
+
+.notify-body {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.notify-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notify-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.notify-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #101828;
+}

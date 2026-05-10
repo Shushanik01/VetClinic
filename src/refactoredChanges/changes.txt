@@ -1,0 +1,77 @@
+SonarQube issues  ⚠️
+
+1. Prefer `globalThis` over `window`. 
+to fix this changed src/tests/setup.ts from window to globalThis + added a type for globalThis in src/types/global.d.ts
+
+2.Modified src/app/providers/tests/error-boundary.test.tsx  window to globalThis.
+
+3. added << id: _id >> in notify-item.tsx to tell SonarQube that it is intentionally unused. ('id' PropType is defined but prop is never used)
+
+4. Added
+  role="alert"
+  tabIndex={0}
+  onFocus={handleMouseEnter}
+  onBlur={handleMouseLeave}
+  to the div element inside notify-item.tsx, line 72 
+
+5. In Calendar.tsx removed the index from being key in the map, instead added key={day}
++ added  key={day ? dateStr : `null-${i}`}
+         role={day && !isDisabled ? 'button' : undefined}
+
+and   onKeyDown={(e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && day && !isDisabled) {
+        onDateSelect(new Date(currentYear, currentMonth, day));
+      }
+    }}
+
++ added optional chaining 
+className={
+  day &&
+  selectedDate?.getFullYear() === currentYear &&
+  selectedDate?.getMonth() === currentMonth &&
+  selectedDate?.getDate() === day
+    ? styles.selectedDay
+    : undefined
+}
+
+6. In Time.tsx changed p to button, as Non-interactive HTML elements are not designed to have event handlers.
+
+7. Removed dublicates and commented out code from SelectOption.module.className
+
+8. Added  role="button" in SelectOption.tsx as the div was being used as an interactive element
+
+9.In appointment-loader.test replaced  '.w-full.min-h-\\[396px\\]' with String.raw
+
+10. In available-slot-details.test.tsx vi is imported separately on line 11 but vi.mock is called
+ on line 7 before the import. Merged both into one import at the top and move vi.mock after the imports
+
+11. In available-slots-search-schema replaced !date || !date.trim() with optional chaining: if (!date?.trim()) return null;
+
+12. Replaced window with globalThis in book-appointment-popup.test.tsx
+
+13. The same for book-appointment-popup.tsx
+
+14. String.raw added in radio-input.test.tsx
+
+15. Removed redundant "undefined" and replaced parseDateValue(undefined) with parseDateValue() in utils.tests.ts
+
+16. In utils.test.ts replaced [currentMonthDays.length - 1] with .at() method (line 191)
+
+17.removed the redundant undefined in utils.test.ts 
+getInitialViewDate(undefined) ->  const result = getInitialViewDate();
+
+18. In Calendar-day-button.tsx Extracted the nested ternaries into a helper function (getStateClass in line 22)
+
+19. In utils.ts replaced trimmed.match with "RegExp.exec()" method instead.
+
+20. In date-input.tsx used optional chain expression (line 203-208)
+
+21. In radio-input.tsx replaced the handleChange with three declarations: 
+handleSelect — always calls onChange with the selected value
+handleDeselect — calls onChange with '' if clicking the already-selected option, otherwise with the new value
+handleChange — picks between the two above based on the allowDeselect prop
+
+22.In  popup-window.test.tsx replaced removeChild(popupRoot) with remove()
+
+23.  Negated condition fix (lines 13–16) in popup-window.tsx 
+24. Unnecessary type assertion fix (line 15) in popup-window.tsx 

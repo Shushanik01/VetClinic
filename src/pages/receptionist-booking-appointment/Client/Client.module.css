@@ -1,0 +1,44 @@
+.first {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.second {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.visitorWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.visitorWrapper div {
+  gap: 1rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 300px;
+}
+
+.inputGroup input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.hint {
+  font-size: 13px;
+  color: #666;
+}

@@ -1,0 +1,157 @@
+/* Date + Time wrapper */
+.dateTimeWrapper {
+  display: flex;
+  justify-content: space-between;
+  /* gap: 1rem; */
+}
+
+.dateTimeWrapper > div {
+  width: 48%;
+}
+
+.inputWrapper {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: inherit;
+  font-size: 14px;
+}
+
+.profileWrapper div {
+  width: 70%;
+}
+.profileWrapper p {
+  font-size: 14px;
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: #878b93;
+}
+
+.profile {
+  color: #88c1bf;
+}
+
+/* next class needs fix*/
+/* p {
+  margin: 0.5rem 0;
+} */
+
+.reschedulePrompt {
+  font-size: 14px;
+  color: #333;
+  margin: 0.5rem 0;
+  font-weight: normal;
+}
+
+.select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #88c1bf;
+  border-radius: 0.5rem;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+}
+
+.select:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  color: #aaa;
+  border: 1px solid #88c1bf;
+}
+
+/* Custom Time Dropdown */
+.timeDropdown {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+}
+
+.timeDropdownDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.timeDropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border: 1px solid #88c1bf;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.timeDropdownDisabled .timeDropdownHeader {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.timeDropdownPlaceholder {
+  color: #aaa;
+}
+
+.timeDropdownValue {
+  color: #333;
+}
+
+.timeDropdownList {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #88c1bf;
+  border-radius: 0.5rem;
+  overflow-y: auto;
+  max-height: 200px;
+  z-index: 10;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+.timeDropdownOption {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.timeDropdownOption:hover {
+  background-color: #128280;
+  color: white;
+}
+
+.timeDropdownOptionSelected {
+  background-color: #88c1bf;
+  color: white;
+  font-weight: 500;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
