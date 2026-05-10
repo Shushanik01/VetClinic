@@ -20,8 +20,8 @@ export const CalendarDayButton = ({
   const isBoundary = isRangeStart || isRangeEnd || isSelected;
 
   const getStateClass = () => {
-    if (isDisabled) return 'text-neutral-400';
     if (isBoundary) return 'bg-green-400 text-neutral-0 cursor-pointer';
+    if (isDisabled) return 'text-neutral-400';
     if (isInRange) return 'bg-green-300 text-black-900 cursor-pointer';
     return 'text-black-900 hover:bg-green-300 cursor-pointer';
   };

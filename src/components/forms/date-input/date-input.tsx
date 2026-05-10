@@ -32,6 +32,8 @@ export type CalendarInputProps = {
   shouldValidate?: boolean;
   /** When true, render a permanently visible calendar and hide the text input. */
   inline?: boolean;
+  /** When provided, only dates in this list (YYYY-MM-DD) are selectable */
+  availableDates?: string[];
 };
 
 export const CalendarInput = ({
@@ -50,6 +52,7 @@ export const CalendarInput = ({
   clearable = false,
   shouldValidate = true,
   inline = false,
+  availableDates,
 }: CalendarInputProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [localError, setLocalError] = useState<string>('');
@@ -262,7 +265,8 @@ export const CalendarInput = ({
     }
   };
 
-  const dropdownPositionClass = dropdownPosition === 'bottom' ? 'top-full mt-0.5' : 'bottom-full mb-0.5';
+  const dropdownPositionClass =
+    dropdownPosition === 'bottom' ? 'top-full mt-0.5' : 'bottom-full mb-0.5';
 
   return (
     <div className="flex flex-col" ref={wrapperRef}>
@@ -415,6 +419,7 @@ export const CalendarInput = ({
               allowFutureDates={allowFutureDates}
               todayOnly={todayOnly}
               maxFutureYears={maxFutureYears}
+              availableDates={availableDates}
             />
           </div>
         )}

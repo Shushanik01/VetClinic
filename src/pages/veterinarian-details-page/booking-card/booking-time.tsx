@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGetVeterinarianAvailableSlotsQuery } from '~/store/api/vets/vets-api';
+import { useGetVetAvailableDatesQuery } from '~/store/api/appointments/appointment-api';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CalendarInput } from '~/components/forms/date-input';
@@ -71,6 +72,12 @@ const BookingTime: React.FC<BookingTimeProps> = ({
   React.useEffect(() => {
     setDateInputValue(selectedDateString);
   }, [selectedDateString]);
+
+  const { data: availableDatesData } = useGetVetAvailableDatesQuery(
+    veterinarianId,
+    { skip: !showSlots }
+  );
+  const availableDates = availableDatesData?.dates;
 
   const { data, currentData, isFetching, refetch } =
     useGetVeterinarianAvailableSlotsQuery(
@@ -228,8 +235,10 @@ const BookingTime: React.FC<BookingTimeProps> = ({
             onChange={handleDateChange}
             allowPastDates={false}
             allowFutureDates
+            maxFutureYears={2}
             clearable
             inline
+            availableDates={availableDates}
           />
         </div>
       )}

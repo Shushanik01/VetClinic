@@ -12,7 +12,13 @@ type CalendarGridProps = {
   allowFutureDates: boolean;
   todayOnly?: boolean;
   maxFutureYears?: number;
+  /** When provided, only dates in this set (YYYY-MM-DD) are selectable */
+  availableDates?: string[];
 };
+
+const pad = (n: number) => String(n).padStart(2, '0');
+const toDateString = (d: Date) =>
+  `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
 export const CalendarGrid = ({
   calendarDays,
@@ -24,7 +30,9 @@ export const CalendarGrid = ({
   allowFutureDates,
   todayOnly = false,
   maxFutureYears = 1,
+  availableDates,
 }: CalendarGridProps) => {
+  const availableDateSet = availableDates ? new Set(availableDates) : null;
   const today = toStartOfDay(new Date());
   const maxDate = toStartOfDay(
     new Date(
@@ -74,12 +82,17 @@ export const CalendarGrid = ({
             dayStartOfDay.getTime() > normalizedRangeStart.getTime() &&
             dayStartOfDay.getTime() < normalizedRangeEnd.getTime();
 
+          const isUnavailable =
+            availableDateSet !== null &&
+            !availableDateSet.has(toDateString(dayStartOfDay));
+
           const isDisabled =
             isOutsideMonth ||
             (todayOnly && dayStartOfDay.getTime() !== today.getTime()) ||
             (isPast && !allowPastDates) ||
             (isFuture && !allowFutureDates) ||
-            isAfterMax;
+            isAfterMax ||
+            isUnavailable;
 
           return (
             <CalendarDayButton

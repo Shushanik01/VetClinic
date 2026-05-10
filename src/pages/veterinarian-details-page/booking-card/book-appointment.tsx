@@ -20,7 +20,10 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({
     navigate(-1);
   };
 
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(() => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  });
   const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
 
   return (
@@ -53,7 +56,7 @@ const BookAppointment: React.FC<BookAppointmentProps> = ({
         </div>
 
         {/* Right section - Booking */}
-          
+
         <div className="bg-neutral-0 flex-1 min-w-0 p-4 rounded-2xl">
           <p className="text-h3 text-black-900 mb-4">Book Appointment</p>
 
