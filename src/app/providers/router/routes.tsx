@@ -69,20 +69,12 @@ export const router = createBrowserRouter([
 
       {
         path: ROUTES_PATH.RECEPTIONIST_BOOKING,
-        element: (
-          <ProtectedRoute allowedRoles={[UserRole.RECEPTIONIST]}>
-            <ReceptionBooking />
-          </ProtectedRoute>
-        ),
+        element: <ReceptionBooking />,
       },
 
       {
         path: ROUTES_PATH.MY_APPOINTMENTS,
-        element: (
-          <ProtectedRoute allowedRoles={[UserRole.CLIENT]}>
-            <ClientAppointments />
-          </ProtectedRoute>
-        ),
+        element: <ClientAppointments />,
       },
 
       {

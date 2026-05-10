@@ -25,8 +25,16 @@ export const appointmentHandlers = [
   http.get('/appointments', async ({ request }) => {
     const auth = requireAuth(request);
 
+    await delay(NETWORK_DELAY_MS);
+
     if ('response' in auth) {
-      return auth.response;
+      // No auth token — return all appointments for unauthenticated demo access
+      return HttpResponse.json({
+        appointments: mockDb.appointments.getForActor({
+          userId: 'demo',
+          role: 'Receptionist',
+        }),
+      });
     }
 
     const roleValidation = requireRole(auth.context, [
@@ -39,7 +47,6 @@ export const appointmentHandlers = [
       return roleValidation.response;
     }
 
-    await delay(NETWORK_DELAY_MS);
     return HttpResponse.json({
       appointments: mockDb.appointments.getForActor(auth.context),
     });
@@ -158,13 +165,13 @@ export const appointmentHandlers = [
 
   http.delete('/appointments/:appointmentId', async ({ request, params }) => {
     const auth = requireAuth(request);
-
-    if ('response' in auth) {
-      return auth.response;
-    }
+    const actor =
+      'response' in auth
+        ? { userId: 'demo', role: 'Receptionist' as const }
+        : auth.context;
 
     const appointmentId = String(params.appointmentId);
-    const cancelled = mockDb.appointments.cancel(appointmentId, auth.context);
+    const cancelled = mockDb.appointments.cancel(appointmentId, actor);
 
     await delay(NETWORK_DELAY_MS);
 
@@ -198,10 +205,10 @@ export const appointmentHandlers = [
     '/appointments/:appointmentId/reschedule',
     async ({ request, params }) => {
       const auth = requireAuth(request);
-
-      if ('response' in auth) {
-        return auth.response;
-      }
+      const actor =
+        'response' in auth
+          ? { userId: 'demo', role: 'Receptionist' as const }
+          : auth.context;
 
       const appointmentId = String(params.appointmentId);
       const body = (await request.json()) as { newDateTime: string };
@@ -209,7 +216,7 @@ export const appointmentHandlers = [
       const appointment = mockDb.appointments.reschedule(
         appointmentId,
         body.newDateTime,
-        auth.context
+        actor
       );
 
       await delay(NETWORK_DELAY_MS);

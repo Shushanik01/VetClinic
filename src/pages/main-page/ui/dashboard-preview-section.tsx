@@ -1,68 +1,120 @@
 import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '~/app/providers/router/routes-path';
 
+const rows = [
+  {
+    client: 'Taylor Green',
+    pet: 'Buddy',
+    age: '4 yrs',
+    vet: 'Dr. Sarah Wilson',
+    specialty: 'General',
+    date: 'May 10, 09:00',
+  },
+  {
+    client: 'Jordan Miller',
+    pet: 'Max',
+    age: '3 yrs',
+    vet: 'Dr. Jennifer Lee',
+    specialty: 'Surgery',
+    date: 'May 10, 11:00',
+  },
+  {
+    client: 'Emma Davis',
+    pet: 'Nala',
+    age: '5 yrs',
+    vet: 'Dr. James Brown',
+    specialty: 'Dentistry',
+    date: 'May 10, 14:00',
+  },
+  {
+    client: 'Noah Carter',
+    pet: 'Charlie',
+    age: '6 yrs',
+    vet: 'Dr. Sarah Wilson',
+    specialty: 'General',
+    date: 'May 11, 09:00',
+  },
+  {
+    client: 'Olivia Kim',
+    pet: 'Coco',
+    age: '4 yrs',
+    vet: 'Dr. Jennifer Lee',
+    specialty: 'Surgery',
+    date: 'May 11, 11:00',
+  },
+];
+
 const ReceptionistPreview = () => (
-  <div className="absolute inset-0 overflow-hidden rounded-4xl opacity-20 pointer-events-none select-none">
-    <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-2">
-      {/* Table header */}
-      <div className="flex gap-2 px-3 py-1.5 bg-white/30 rounded-lg">
-        <span className="flex-1 text-[9px] font-bold text-white">Client</span>
-        <span className="w-16 text-[9px] font-bold text-white">Date</span>
-        <span className="w-12 text-[9px] font-bold text-white">Time</span>
-        <span className="w-14 text-[9px] font-bold text-white">Status</span>
+  <div className="absolute inset-0 overflow-hidden rounded-4xl pointer-events-none select-none flex items-end justify-center pb-2">
+    <div
+      className="w-[95%] rounded-2xl bg-white shadow-2xl overflow-hidden"
+      style={{ transform: 'perspective(900px) rotateX(6deg)', opacity: 0.92 }}
+    >
+      {/* Dashboard header bar */}
+      <div className="bg-gray-50 border-b border-gray-200 px-4 py-2.5 flex items-center justify-between">
+        <div>
+          <p className="text-[10px] font-bold text-gray-800">Appointments</p>
+          <p className="text-[8px] text-gray-400">22 booked appointments</p>
+        </div>
+        <div className="bg-gray-900 rounded-full px-3 py-1">
+          <span className="text-[8px] text-white font-medium">
+            Create an Appointment
+          </span>
+        </div>
       </div>
-      {/* Table rows */}
-      {[
-        {
-          name: 'Emma Davis',
-          date: 'May 12',
-          time: '09:00',
-          status: 'Confirmed',
-          statusColor: 'bg-green-300',
-        },
-        {
-          name: 'Noah Carter',
-          date: 'May 12',
-          time: '10:30',
-          status: 'Pending',
-          statusColor: 'bg-yellow-300',
-        },
-        {
-          name: 'Olivia Kim',
-          date: 'May 12',
-          time: '11:00',
-          status: 'Confirmed',
-          statusColor: 'bg-green-300',
-        },
-        {
-          name: 'Liam Foster',
-          date: 'May 12',
-          time: '14:00',
-          status: 'Cancelled',
-          statusColor: 'bg-red-300',
-        },
-        {
-          name: 'Ava Johnson',
-          date: 'May 13',
-          time: '09:30',
-          status: 'Confirmed',
-          statusColor: 'bg-green-300',
-        },
-      ].map((row) => (
-        <div
-          key={row.name}
-          className="flex gap-2 px-3 py-1.5 bg-white/20 rounded-lg items-center"
-        >
-          <span className="flex-1 text-[9px] text-white truncate">
-            {row.name}
-          </span>
-          <span className="w-16 text-[9px] text-white">{row.date}</span>
-          <span className="w-12 text-[9px] text-white">{row.time}</span>
+
+      {/* Column headers */}
+      <div className="grid grid-cols-[1.4fr_0.8fr_0.6fr_1.2fr_1.3fr_0.8fr_1.1fr_0.8fr_0.4fr] bg-gray-50 border-b border-gray-200 px-3 py-1.5 gap-1">
+        {[
+          'Client Name',
+          'Pet Name',
+          'Pet Age',
+          'Veterinarian',
+          'Clinic Address',
+          'Specialty',
+          'Date & Time',
+          'Status',
+          '',
+        ].map((h) => (
           <span
-            className={`w-14 text-[9px] text-white px-1.5 py-0.5 rounded-full ${row.statusColor} text-black/70 text-center`}
+            key={h}
+            className="text-[7px] font-bold text-gray-500 uppercase tracking-wide truncate"
           >
-            {row.status}
+            {h}
           </span>
+        ))}
+      </div>
+
+      {/* Rows */}
+      {rows.map((row, i) => (
+        <div
+          key={row.client}
+          className={`grid grid-cols-[1.4fr_0.8fr_0.6fr_1.2fr_1.3fr_0.8fr_1.1fr_0.8fr_0.4fr] px-3 py-2 gap-1 items-center border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
+        >
+          <span className="text-[8px] text-gray-800 font-medium truncate">
+            {row.client}
+          </span>
+          <span className="text-[8px] text-gray-600 truncate">{row.pet}</span>
+          <span className="text-[8px] text-gray-500">{row.age}</span>
+          <span className="text-[8px] text-gray-600 truncate">{row.vet}</span>
+          <span className="text-[8px] text-gray-400 truncate">
+            123 Main St, NY…
+          </span>
+          <span className="text-[8px] text-gray-600 truncate">
+            {row.specialty}
+          </span>
+          <span className="text-[8px] text-gray-600 truncate">{row.date}</span>
+          <span className="text-[7px] font-medium bg-blue-50 text-blue-600 border border-blue-200 rounded-full px-1.5 py-0.5 w-fit">
+            Scheduled
+          </span>
+          <div className="flex gap-0.5">
+            <div className="w-3.5 h-3.5 rounded bg-teal-100 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-teal-500 rounded-sm" />
+            </div>
+            <div className="w-3.5 h-3.5 rounded bg-red-100 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-red-400 rounded-sm" />
+            </div>
+          </div>
         </div>
       ))}
     </div>
@@ -137,7 +189,7 @@ export const DashboardPreviewSection = () => {
 
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Receptionist Dashboard */}
-          <div className="relative flex-1 rounded-4xl bg-green-400 p-6 flex flex-col justify-between gap-6 min-h-[320px] overflow-hidden">
+          <div className="relative flex-1 rounded-4xl bg-green-400 p-6 flex flex-col justify-between gap-6 min-h-95 overflow-hidden">
             <ReceptionistPreview />
             <div className="relative z-10 flex flex-col gap-2">
               <span className="text-body-s-bold text-neutral-0/70 uppercase tracking-widest">
