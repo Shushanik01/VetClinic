@@ -203,6 +203,7 @@ const normalizeFeedbackItem = (
   const lastName = asString(record.clientLastName);
   const fullClientName = asString(record.clientName).trim();
   const petType = asString(record.petType || record.petSpecies);
+  const petLabel = asString(record.petLabel);
 
   return {
     id: asString(record.id || record.feedbackId || `${index}`),
@@ -210,7 +211,7 @@ const normalizeFeedbackItem = (
       fullClientName ||
       [firstName, lastName].filter(Boolean).join(' ') ||
       'Anonymous',
-    petLabel: petType ? `Pet: ${petType}` : 'Pet: Not specified',
+    petLabel: petLabel || (petType ? `Pet: ${petType}` : 'Pet: Not specified'),
     rating: asNumber(record.rating),
     comment: asString(record.comment || record.text),
     date: asString(record.date || record.createdAt || record.submittedAt),

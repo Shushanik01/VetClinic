@@ -47,7 +47,7 @@ const ClientFeedback: React.FC<ClientFeedbackProps> = ({ veterinarianId }) => {
 
   const { data, isFetching, isError } = useGetVeterinarianFeedbackQuery({
     veterinarianId,
-    page: activePage,
+    page: activePage - 1,
     size: ITEMS_PER_PAGE,
     sort: SORT_MAP[sortBy],
   });
