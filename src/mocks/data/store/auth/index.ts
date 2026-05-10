@@ -1,4 +1,11 @@
-import type { SignInRequest, SignUpRequest } from '~/store/api/auth/auth-types';
+import type {
+  SignInRequest,
+  SignUpRequest,
+  VerifyEmailRequest,
+  ResendVerificationRequest,
+  RequestPasswordRecoveryRequest,
+  ResetPasswordRequest,
+} from '~/store/api/auth/auth-types';
 import type { UserRole } from '~/store/features/user/user-types';
 import { deepClone } from '~/mocks/data/utils';
 import {
@@ -7,6 +14,8 @@ import {
   getUserByEmail,
   getUserById,
   getUsersByRole,
+  MOCK_VERIFICATION_CODE,
+  pendingPasswordResets,
   sessionsByToken,
   users,
 } from './data';
@@ -123,6 +132,77 @@ export const authEntity = {
     user.phoneNumber = profile.phoneNumber;
 
     return deepClone(user);
+  },
+
+  verifyEmail: (
+    payload: VerifyEmailRequest
+  ): { status: number; body: { message: string } } => {
+    const user = getUserByEmail(payload.email);
+    if (!user) {
+      return { status: 404, body: { message: 'User not found.' } };
+    }
+    if (payload.verificationCode !== MOCK_VERIFICATION_CODE) {
+      return {
+        status: 400,
+        body: { message: 'Invalid or expired verification code.' },
+      };
+    }
+    return { status: 200, body: { message: 'Email verified successfully.' } };
+  },
+
+  resendVerification: (
+    payload: ResendVerificationRequest
+  ): { status: number; body: { message: string } } => {
+    const user = getUserByEmail(payload.email);
+    if (!user) {
+      return { status: 404, body: { message: 'User not found.' } };
+    }
+    return {
+      status: 200,
+      body: { message: 'Verification code resent successfully.' },
+    };
+  },
+
+  requestPasswordRecovery: (
+    payload: RequestPasswordRecoveryRequest
+  ): {
+    status: number;
+    body: { message: string; expiresInMinutes?: number };
+  } => {
+    const user = getUserByEmail(payload.email);
+    if (user) {
+      pendingPasswordResets.add(payload.email.trim().toLowerCase());
+    }
+    return {
+      status: 200,
+      body: {
+        message:
+          'If an account with this email exists, a recovery code has been sent.',
+        expiresInMinutes: 15,
+      },
+    };
+  },
+
+  resetPassword: (
+    payload: ResetPasswordRequest
+  ): { status: number; body: { message: string } } => {
+    const normalizedEmail = payload.email.trim().toLowerCase();
+    const user = getUserByEmail(payload.email);
+    if (!user || !pendingPasswordResets.has(normalizedEmail)) {
+      return {
+        status: 400,
+        body: { message: 'Invalid or expired verification code.' },
+      };
+    }
+    if (payload.verificationCode !== MOCK_VERIFICATION_CODE) {
+      return {
+        status: 400,
+        body: { message: 'Invalid or expired verification code.' },
+      };
+    }
+    user.password = payload.newPassword;
+    pendingPasswordResets.delete(normalizedEmail);
+    return { status: 200, body: { message: 'Password reset successfully.' } };
   },
 
   changePassword: (

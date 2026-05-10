@@ -26,9 +26,9 @@ export const GuestHeader = () => {
           Main Page
         </NavLink>
 
-        <NavLink to={ROUTES_PATH.BOOK_APPOINTMENT} className={getNavClass}>
+        {/* <NavLink to={ROUTES_PATH.BOOK_APPOINTMENT} className={getNavClass}>
           Book Appointment
-        </NavLink>
+        </NavLink> */}
       </nav>
 
       <NavLink to={ROUTES_PATH.LOGIN} state={{ from: location.pathname }}>

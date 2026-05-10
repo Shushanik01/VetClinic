@@ -47,4 +47,4 @@ export const startMockServer = async (): Promise<void> => {
 };
 
 export const shouldEnableMocking = (): boolean =>
-  import.meta.env.DEV && import.meta.env.VITE_ENABLE_MSW === 'true';
+  import.meta.env.VITE_ENABLE_MSW === 'true';

@@ -65,6 +65,9 @@ export const users: MockUserAccount[] = [
 
 export const sessionsByToken = new Map<string, MockSession>();
 
+export const MOCK_VERIFICATION_CODE = '123456';
+export const pendingPasswordResets = new Set<string>();
+
 // Helper functions
 export const encodeBase64Url = (value: string): string => {
   const base64 = btoa(value);

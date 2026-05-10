@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Tag } from '~/components/ui/tag';
 import { useGetVeterinariansListQuery } from '~/store/api/vets/vets-api';
 
@@ -40,7 +41,7 @@ export const OurVeterinariansSection = () => {
             {veterinarians.map((vet) => (
               <div
                 key={vet.id}
-                className="h-[388px] rounded-4xl border border-green-400 bg-neutral-0 flex flex-col overflow-hidden"
+                className="rounded-4xl border border-green-400 bg-neutral-0 flex flex-col overflow-hidden hover:shadow-md transition-shadow"
               >
                 <img
                   src={vet.imageUrl || '/doctor.png'}
@@ -67,6 +68,13 @@ export const OurVeterinariansSection = () => {
                       <Tag label="General" variant="green" />
                     )}
                   </div>
+
+                  <Link
+                    to={`/veterinarian/${vet.id}`}
+                    className="mt-auto h-12 rounded-4xl px-10 flex items-center justify-center bg-green-400 text-neutral-0 font-lato text-button font-normal transition-colors duration-200 hover:bg-green-300"
+                  >
+                    View Doctor's Profile
+                  </Link>
                 </div>
               </div>
             ))}

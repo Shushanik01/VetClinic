@@ -119,68 +119,84 @@ export const feedbackByVeterinarianId: Record<string, VeterinarianFeedback[]> =
     ],
   };
 
-export const availableSlots: AppointmentSlot[] = [
+type VetSchedule = {
+  veterinarianSpecialty: string;
+  veterinarianName: string;
+  veterinarianId: string;
+  clinicId: string;
+  /** ISO weekday numbers: 1=Mon … 5=Fri */
+  workDays: number[];
+  times: string[];
+};
+
+const vetSchedules: VetSchedule[] = [
   {
     veterinarianSpecialty: 'Surgery',
     veterinarianName: 'Dr. Jennifer Lee',
     veterinarianId: 'f7g8h9i0-j1k2-3l4m-5n6o-7p8q9r0s1t2u',
-    date: '2026-03-20',
-    time: '09:00',
     clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
-  },
-  {
-    veterinarianSpecialty: 'Surgery',
-    veterinarianName: 'Dr. Jennifer Lee',
-    veterinarianId: 'f7g8h9i0-j1k2-3l4m-5n6o-7p8q9r0s1t2u',
-    date: '2026-03-20',
-    time: '10:00',
-    clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
+    workDays: [1, 3, 5], // Mon, Wed, Fri
+    times: ['09:00', '11:00', '14:00'],
   },
   {
     veterinarianSpecialty: 'General',
     veterinarianName: 'Dr. Sarah Wilson',
     veterinarianId: 'c1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c',
-    date: '2026-03-20',
-    time: '09:30',
     clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
-  },
-  {
-    veterinarianSpecialty: 'General',
-    veterinarianName: 'Dr. Sarah Wilson',
-    veterinarianId: 'c1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c',
-    date: '2026-03-22',
-    time: '14:00',
-    clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
+    workDays: [1, 2, 3, 4, 5], // Mon–Fri
+    times: ['09:00', '09:30', '10:00', '11:00', '14:00', '14:30', '15:00'],
   },
   {
     veterinarianSpecialty: 'Dentistry',
     veterinarianName: 'Dr. James Brown',
     veterinarianId: 'd5e6f7g8-9h0i-1j2k-3l4m-5n6o7p8q9r0s',
-    date: '2026-03-21',
-    time: '10:30',
     clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
-  },
-  {
-    veterinarianSpecialty: 'Dentistry',
-    veterinarianName: 'Dr. James Brown',
-    veterinarianId: 'd5e6f7g8-9h0i-1j2k-3l4m-5n6o7p8q9r0s',
-    date: '2026-03-21',
-    time: '11:30',
-    clinicId: 'clinic-1',
-    clinicAddress: DEFAULT_CLINIC_ADDRESS,
-    bookAppointmentAvailable: true,
+    workDays: [2, 4], // Tue, Thu
+    times: ['09:00', '10:30', '13:00', '14:30'],
   },
 ];
+
+function generateAvailableSlots(): AppointmentSlot[] {
+  const slots: AppointmentSlot[] = [];
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  const start = new Date();
+  start.setDate(start.getDate() + 1); // start from tomorrow
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date(start);
+  end.setMonth(end.getMonth() + 13); // 13 months ahead
+
+  const current = new Date(start);
+
+  while (current <= end) {
+    const dow = current.getDay(); // 0=Sun … 6=Sat
+    const dateStr = `${current.getFullYear()}-${pad(current.getMonth() + 1)}-${pad(current.getDate())}`;
+
+    for (const vet of vetSchedules) {
+      if (vet.workDays.includes(dow)) {
+        for (const time of vet.times) {
+          slots.push({
+            veterinarianSpecialty: vet.veterinarianSpecialty,
+            veterinarianName: vet.veterinarianName,
+            veterinarianId: vet.veterinarianId,
+            date: dateStr,
+            time,
+            clinicId: vet.clinicId,
+            clinicAddress: DEFAULT_CLINIC_ADDRESS,
+            bookAppointmentAvailable: true,
+          });
+        }
+      }
+    }
+
+    current.setDate(current.getDate() + 1);
+  }
+
+  return slots;
+}
+
+export const availableSlots: AppointmentSlot[] = generateAvailableSlots();
 
 export type AvailableSlotsFilters = {
   veterinarianSpecialty?: string;
