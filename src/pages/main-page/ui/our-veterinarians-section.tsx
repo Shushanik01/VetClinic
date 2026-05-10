@@ -44,7 +44,7 @@ export const OurVeterinariansSection = () => {
                 className="rounded-4xl border border-green-400 bg-neutral-0 flex flex-col overflow-hidden hover:shadow-md transition-shadow"
               >
                 <img
-                  src={vet.imageUrl || '/doctor.png'}
+                  src={vet.imageUrl || `${import.meta.env.BASE_URL}doctor.png`}
                   alt={vet.fullName}
                   className="w-full h-[220px] object-cover"
                 />

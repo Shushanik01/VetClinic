@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import { ROUTES_PATH } from '~/app/providers/router/routes-path';
 
 export const AppointmentSection = () => {
+  const base = import.meta.env.BASE_URL;
   const images = [
-    '/book-appointment-main-page1.jpg',
-    '/book-appointment-main-page2.jpg',
+    `${base}book-appointment-main-page1.jpg`,
+    `${base}book-appointment-main-page2.jpg`,
   ];
 
   return (

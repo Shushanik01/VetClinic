@@ -17,7 +17,7 @@ export const veterinarians: VeterinarianProfile[] = [
     clinicAddress: DEFAULT_CLINIC_ADDRESS,
     specializations: ['Surgery', 'Orthopedics'],
     languages: ['English', 'Spanish'],
-    imageUrl: '/doctor.png',
+    imageUrl: `${import.meta.env.BASE_URL}doctor.png`,
     education: [
       { title: 'DVM', organization: 'Cornell University', year: '2014' },
       { title: 'BS in Biology', organization: 'Yale University', year: '2010' },
@@ -51,7 +51,7 @@ export const veterinarians: VeterinarianProfile[] = [
     clinicAddress: DEFAULT_CLINIC_ADDRESS,
     specializations: ['General practice', 'Wellness checks'],
     languages: ['English'],
-    imageUrl: '/doctor.png',
+    imageUrl: `${import.meta.env.BASE_URL}doctor.png`,
     education: [
       { title: 'DVM', organization: 'UC Davis', year: '2016' },
       {
@@ -88,7 +88,7 @@ export const veterinarians: VeterinarianProfile[] = [
     clinicAddress: DEFAULT_CLINIC_ADDRESS,
     specializations: ['Dentistry', 'Oral surgery'],
     languages: ['English', 'French'],
-    imageUrl: '/doctor.png',
+    imageUrl: `${import.meta.env.BASE_URL}doctor.png`,
     education: [
       {
         title: 'DVM',
