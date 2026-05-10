@@ -1,4 +1,4 @@
-import { delay, http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from '~/mocks/handlers/utils/base-http';
 import { mockDb } from '~/mocks/data/mock-db';
 import { requireAuth, requireRole } from '~/mocks/handlers/utils/auth-guard';
 import type {

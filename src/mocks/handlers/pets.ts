@@ -1,4 +1,4 @@
-import { delay, http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from '~/mocks/handlers/utils/base-http';
 import { petsEntity } from '~/mocks/data/store/pets';
 import { requireAuth } from '~/mocks/handlers/utils/auth-guard';
 import type {

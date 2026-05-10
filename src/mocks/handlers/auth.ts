@@ -1,4 +1,4 @@
-import { delay, http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from '~/mocks/handlers/utils/base-http';
 import { authEntity } from '~/mocks/data/store/auth';
 import type {
   SignInRequest,

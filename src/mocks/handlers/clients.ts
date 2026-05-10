@@ -1,4 +1,4 @@
-import { delay, http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from '~/mocks/handlers/utils/base-http';
 import { mockDb } from '~/mocks/data/mock-db';
 
 const NETWORK_DELAY_MS = 250;

@@ -22,7 +22,9 @@ import {
 import { clearPets, PETS_STORAGE_KEY } from '~/store/features/pets/pets-slice';
 
 const apiBaseUrl =
-  import.meta.env.VITE_API_URL || window.__APP_CONFIG__.API_URL;
+  import.meta.env.VITE_ENABLE_MSW === 'true'
+    ? import.meta.env.BASE_URL
+    : import.meta.env.VITE_API_URL || window.__APP_CONFIG__.API_URL;
 
 const rawBaseQuery = fetchBaseQuery({
   baseUrl: apiBaseUrl,
