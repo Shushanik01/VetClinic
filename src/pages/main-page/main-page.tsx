@@ -8,10 +8,10 @@ export const MainPage = () => {
   return (
     <main>
       <AppointmentSection />
-      <WhyChooseSection />
-      <OurServicesSection />
       <OurVeterinariansSection />
       <DashboardPreviewSection />
+      <WhyChooseSection />
+      <OurServicesSection />
     </main>
   );
 };

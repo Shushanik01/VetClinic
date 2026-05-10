@@ -121,56 +121,112 @@ const ReceptionistPreview = () => (
   </div>
 );
 
+const clientCards = [
+  {
+    date: 'Sunday, May 10, 2026',
+    time: '09:00',
+    vet: 'Dr. Sarah Wilson',
+    specialty: 'General',
+    status: 'Scheduled',
+    statusColor: 'bg-blue-50 text-blue-600 border-blue-200',
+  },
+  {
+    date: 'Sunday, May 10, 2026',
+    time: '11:00',
+    vet: 'Dr. Jennifer Lee',
+    specialty: 'Surgery',
+    status: 'Scheduled',
+    statusColor: 'bg-blue-50 text-blue-600 border-blue-200',
+  },
+  {
+    date: 'Monday, May 11, 2026',
+    time: '09:00',
+    vet: 'Dr. Sarah Wilson',
+    specialty: 'General',
+    status: 'Scheduled',
+    statusColor: 'bg-blue-50 text-blue-600 border-blue-200',
+  },
+  {
+    date: 'Tuesday, May 12, 2026',
+    time: '09:00',
+    vet: 'Dr. James Brown',
+    specialty: 'Dentistry',
+    status: 'Scheduled',
+    statusColor: 'bg-blue-50 text-blue-600 border-blue-200',
+  },
+];
+
 const ClientPreview = () => (
-  <div className="absolute inset-0 overflow-hidden rounded-4xl opacity-20 pointer-events-none select-none">
-    <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-2">
-      {[
-        {
-          pet: 'Bella (Dog)',
-          vet: 'Dr. Jennifer Lee',
-          date: 'May 14',
-          time: '09:00',
-          badge: 'Surgery',
-        },
-        {
-          pet: 'Milo (Cat)',
-          vet: 'Dr. Sarah Wilson',
-          date: 'May 19',
-          time: '10:00',
-          badge: 'General',
-        },
-        {
-          pet: 'Coco (Rabbit)',
-          vet: 'Dr. James Brown',
-          date: 'May 22',
-          time: '13:00',
-          badge: 'Dentistry',
-        },
-      ].map((card) => (
-        <div
-          key={card.pet}
-          className="bg-white/20 rounded-xl px-3 py-2 flex items-center gap-3"
-        >
-          <div className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center shrink-0">
-            <span className="text-[10px] text-white font-bold">
-              {card.pet[0]}
-            </span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-[9px] font-bold text-white truncate">
-              {card.pet}
-            </p>
-            <p className="text-[8px] text-white/80 truncate">{card.vet}</p>
-          </div>
-          <div className="text-right shrink-0">
-            <p className="text-[9px] text-white">{card.date}</p>
-            <p className="text-[8px] text-white/80">{card.time}</p>
-          </div>
-          <span className="text-[8px] bg-white/30 text-white px-1.5 py-0.5 rounded-full shrink-0">
-            {card.badge}
+  <div className="absolute inset-0 overflow-hidden rounded-4xl pointer-events-none select-none flex items-end justify-center pb-2">
+    <div
+      className="w-[95%] rounded-2xl bg-white shadow-2xl overflow-hidden"
+      style={{ transform: 'perspective(900px) rotateX(6deg)', opacity: 0.92 }}
+    >
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 px-4 py-2.5 flex items-center justify-between">
+        <p className="text-[10px] font-bold text-gray-800">My Appointments</p>
+        <div className="bg-gray-900 rounded-full px-3 py-1">
+          <span className="text-[8px] text-white font-medium">
+            Book Appointment
           </span>
         </div>
-      ))}
+      </div>
+
+      {/* Cards grid */}
+      <div className="p-2 grid grid-cols-2 gap-2 bg-gray-50">
+        {clientCards.map((card, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-xl p-2.5 border border-gray-100 shadow-sm flex flex-col gap-1.5"
+          >
+            <span
+              className={`text-[7px] font-medium border rounded-full px-1.5 py-0.5 w-fit ${card.statusColor}`}
+            >
+              {card.status}
+            </span>
+            <div className="grid grid-cols-2 gap-x-2 gap-y-0.5">
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-sm bg-gray-300 shrink-0" />
+                <span className="text-[6.5px] text-gray-600 truncate">
+                  {card.date}
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-teal-300 shrink-0" />
+                <span className="text-[6.5px] text-teal-700 font-medium truncate">
+                  {card.vet}
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-sm bg-gray-300 shrink-0" />
+                <span className="text-[6.5px] text-gray-500 truncate">
+                  {card.time}
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-sm bg-gray-300 shrink-0" />
+                <span className="text-[6.5px] text-gray-600 truncate">
+                  {card.specialty}
+                </span>
+              </div>
+              <div className="col-span-2 flex items-center gap-1">
+                <div className="w-2 h-2 rounded-sm bg-gray-300 shrink-0" />
+                <span className="text-[6.5px] text-gray-400 truncate">
+                  123 Main Street, New York, NY 10001
+                </span>
+              </div>
+            </div>
+            <div className="flex gap-1 mt-0.5">
+              <div className="flex-1 bg-white border border-gray-300 rounded text-[6px] text-gray-700 text-center py-0.5">
+                Cancel
+              </div>
+              <div className="flex-1 bg-gray-900 rounded text-[6px] text-white text-center py-0.5">
+                Reschedule
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -211,14 +267,14 @@ export const DashboardPreviewSection = () => {
           </div>
 
           {/* Client Dashboard */}
-          <div className="relative flex-1 rounded-4xl bg-neutral-0 border border-green-400 p-6 flex flex-col justify-between gap-6 min-h-[320px] overflow-hidden">
+          <div className="relative flex-1 rounded-4xl bg-teal-600 p-6 flex flex-col justify-between gap-6 min-h-95 overflow-hidden">
             <ClientPreview />
             <div className="relative z-10 flex flex-col gap-2">
-              <span className="text-body-s-bold text-black-700/60 uppercase tracking-widest">
+              <span className="text-body-s-bold text-neutral-0/70 uppercase tracking-widest">
                 Client
               </span>
-              <h3 className="text-h2 text-black-900">Client Dashboard</h3>
-              <p className="text-body-m-regular text-black-800">
+              <h3 className="text-h2 text-neutral-0">Client Dashboard</h3>
+              <p className="text-body-m-regular text-neutral-0/80">
                 See all your upcoming and past appointments, track your pets'
                 health history, leave feedback, and manage your bookings in one
                 place.
@@ -226,7 +282,7 @@ export const DashboardPreviewSection = () => {
             </div>
             <Link
               to={ROUTES_PATH.MY_APPOINTMENTS}
-              className="relative z-10 btn-regular-l text-center w-full hover:brightness-95 transition-all"
+              className="relative z-10 btn-white-l text-center w-full hover:bg-neutral-50 transition-colors"
             >
               View Client's Dashboard
             </Link>
