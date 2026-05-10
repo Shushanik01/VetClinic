@@ -289,7 +289,10 @@ export const appointments: AppointmentSummary[] = [
     petName: 'Buddy',
     petBirthDate: '2022-01-10',
     visitReason: 'Annual check-up',
-    status: 'Scheduled',
+    status: 'Finished',
+    veterinarianRecommendations:
+      'Buddy is in excellent health. Continue regular exercise and maintain a balanced diet. Schedule next annual check-up in 12 months.',
+    feedbackId: 'fdbk-1001',
   },
   {
     appointmentId: 'apt-1002',
@@ -307,7 +310,9 @@ export const appointments: AppointmentSummary[] = [
     petName: 'Buddy',
     petBirthDate: '2022-01-10',
     visitReason: 'Pre-surgery consultation for a knee injury',
-    status: 'Scheduled',
+    status: 'Service provided',
+    veterinarianRecommendations:
+      'Mild ligament strain confirmed. Restrict strenuous activity for 3–4 weeks. Apply ice 10 minutes twice daily. Return if limping worsens or swelling increases.',
   },
   {
     appointmentId: 'apt-1003',
@@ -404,6 +409,7 @@ export const appointments: AppointmentSummary[] = [
     status: 'Finished',
     veterinarianRecommendations:
       'Recovery is complete. Resume normal walks gradually over the next week.',
+    feedbackId: 'fdbk-1002',
   },
   {
     appointmentId: 'apt-1008',
@@ -424,6 +430,7 @@ export const appointments: AppointmentSummary[] = [
     status: 'Finished',
     veterinarianRecommendations:
       'Gums healed well. Keep using the prescribed oral rinse for one more week.',
+    feedbackId: 'fdbk-1003',
   },
 ];
 

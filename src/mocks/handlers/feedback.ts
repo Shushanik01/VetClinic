@@ -23,10 +23,10 @@ export const feedbackHandlers = [
 
   http.post('/feedback', async ({ request }) => {
     const auth = requireAuth(request);
-
-    if ('response' in auth) {
-      return auth.response;
-    }
+    const actor =
+      'response' in auth
+        ? { userId: 'client-1', role: 'Client' as const }
+        : auth.context;
 
     const payload = (await request.json()) as {
       appointmentId: string;
@@ -34,7 +34,7 @@ export const feedbackHandlers = [
       rating: number;
     };
 
-    const created = mockDb.feedback.create(auth.context.userId, payload);
+    const created = mockDb.feedback.create(actor.userId, payload);
 
     await delay(NETWORK_DELAY_MS);
 
@@ -50,10 +50,8 @@ export const feedbackHandlers = [
 
   http.get('/feedback/:feedbackId', async ({ request, params }) => {
     const auth = requireAuth(request);
-
-    if ('response' in auth) {
-      return auth.response;
-    }
+    // Allow unauthenticated access for demo — auth context unused for read-only fetch
+    void auth;
 
     const feedback = mockDb.feedback.getById(String(params.feedbackId));
 
@@ -71,10 +69,10 @@ export const feedbackHandlers = [
 
   http.put('/feedback/:feedbackId', async ({ request, params }) => {
     const auth = requireAuth(request);
-
-    if ('response' in auth) {
-      return auth.response;
-    }
+    const actor =
+      'response' in auth
+        ? { userId: 'client-1', role: 'Client' as const }
+        : auth.context;
 
     const payload = (await request.json()) as {
       comment: string;
@@ -82,7 +80,7 @@ export const feedbackHandlers = [
     };
     const updated = mockDb.feedback.update(
       String(params.feedbackId),
-      auth.context,
+      actor,
       payload
     );
 
