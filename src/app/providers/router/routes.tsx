@@ -37,84 +37,87 @@ const RedirectReceptionistToAppointments = ({
   return <>{children}</>;
 };
 
-export const router = createBrowserRouter([
-  {
-    path: ROUTES_PATH.NOT_FOUND,
-    element: (
-      <RedirectReceptionistToAppointments>
-        <NotFoundPage />
-      </RedirectReceptionistToAppointments>
-    ),
-  },
+export const router = createBrowserRouter(
+  [
+    {
+      path: ROUTES_PATH.NOT_FOUND,
+      element: (
+        <RedirectReceptionistToAppointments>
+          <NotFoundPage />
+        </RedirectReceptionistToAppointments>
+      ),
+    },
 
-  {
-    element: <MainLayout />,
-    children: [
-      {
-        path: ROUTES_PATH.ROOT,
-        element: (
-          <RedirectReceptionistToAppointments>
-            <MainPage />
-          </RedirectReceptionistToAppointments>
-        ),
-      },
-      {
-        path: ROUTES_PATH.VETERINARIAN_PROFILE,
-        element: (
-          <RedirectReceptionistToAppointments>
-            <VeterinarianDetailsPage />
-          </RedirectReceptionistToAppointments>
-        ),
-      },
+    {
+      element: <MainLayout />,
+      children: [
+        {
+          path: ROUTES_PATH.ROOT,
+          element: (
+            <RedirectReceptionistToAppointments>
+              <MainPage />
+            </RedirectReceptionistToAppointments>
+          ),
+        },
+        {
+          path: ROUTES_PATH.VETERINARIAN_PROFILE,
+          element: (
+            <RedirectReceptionistToAppointments>
+              <VeterinarianDetailsPage />
+            </RedirectReceptionistToAppointments>
+          ),
+        },
 
-      {
-        path: ROUTES_PATH.RECEPTIONIST_BOOKING,
-        element: <ReceptionBooking />,
-      },
+        {
+          path: ROUTES_PATH.RECEPTIONIST_BOOKING,
+          element: <ReceptionBooking />,
+        },
 
-      {
-        path: ROUTES_PATH.MY_APPOINTMENTS,
-        element: <ClientAppointments />,
-      },
+        {
+          path: ROUTES_PATH.MY_APPOINTMENTS,
+          element: <ClientAppointments />,
+        },
 
-      {
-        path: ROUTES_PATH.BOOK_APPOINTMENT,
-        element: (
-          <RedirectReceptionistToAppointments>
-            <BookAppointmentPage />
-          </RedirectReceptionistToAppointments>
-        ),
-      },
-      {
-        path: ROUTES_PATH.MY_ACCOUNT,
-        element: (
-          <ProtectedRoute>
-            <MyAccountPage />
-          </ProtectedRoute>
-        ),
-      },
-    ],
-  },
+        {
+          path: ROUTES_PATH.BOOK_APPOINTMENT,
+          element: (
+            <RedirectReceptionistToAppointments>
+              <BookAppointmentPage />
+            </RedirectReceptionistToAppointments>
+          ),
+        },
+        {
+          path: ROUTES_PATH.MY_ACCOUNT,
+          element: (
+            <ProtectedRoute>
+              <MyAccountPage />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
 
-  {
-    element: <AuthLayout />,
-    children: [
-      {
-        path: ROUTES_PATH.LOGIN,
-        element: (
-          <RedirectReceptionistToAppointments>
-            <SignInPage />
-          </RedirectReceptionistToAppointments>
-        ),
-      },
-      {
-        path: ROUTES_PATH.SIGN_UP,
-        element: (
-          <RedirectReceptionistToAppointments>
-            <SignUpPage />
-          </RedirectReceptionistToAppointments>
-        ),
-      },
-    ],
-  },
-]);
+    {
+      element: <AuthLayout />,
+      children: [
+        {
+          path: ROUTES_PATH.LOGIN,
+          element: (
+            <RedirectReceptionistToAppointments>
+              <SignInPage />
+            </RedirectReceptionistToAppointments>
+          ),
+        },
+        {
+          path: ROUTES_PATH.SIGN_UP,
+          element: (
+            <RedirectReceptionistToAppointments>
+              <SignUpPage />
+            </RedirectReceptionistToAppointments>
+          ),
+        },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/' }
+);

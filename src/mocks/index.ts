@@ -29,7 +29,7 @@ export const startMockServer = async (): Promise<void> => {
 
   await worker.start({
     serviceWorker: {
-      url: '/mockServiceWorker.js',
+      url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
     },
     onUnhandledRequest: (request, print) => {
       // Let navigation requests and non-API requests pass through silently.

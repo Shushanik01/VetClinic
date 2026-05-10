@@ -10,6 +10,25 @@
     <div id="root"></div>
     <div id="notify-root"></div>
     <div id="pop-up"></div>
+    <script>
+      // Restore the path that 404.html encoded into the query string.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
     <script src="/config.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>

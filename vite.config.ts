@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: { '~': path.resolve(__dirname, './src') },
     },
+    base: env.VITE_BASE_PATH || '/',
     define: {
       __APP_MODE__: JSON.stringify(mode),
       __APP_MSW_MODE__: JSON.stringify(isMockMode),
