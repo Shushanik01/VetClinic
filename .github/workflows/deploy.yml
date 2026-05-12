@@ -34,6 +34,8 @@ jobs:
         run: npm run build:mock
         env:
           VITE_BASE_PATH: /VetClinic/
+          VITE_GOOGLE_CLIENT_ID: 359782703470-td55h6qeid3qjcssb3vadnjiag1om1g6.apps.googleusercontent.com
+          VITE_RECAPTCHA_SITE_KEY: 6LfIraIsAAAAAF3DPZFfUyOCSPS_B8P7TAjgYiVY
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
